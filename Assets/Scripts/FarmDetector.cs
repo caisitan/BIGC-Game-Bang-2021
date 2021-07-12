@@ -6,30 +6,35 @@ using UnityEngine.Tilemaps;
 public class FarmDetector : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Tile highlightTile;
-    public Tile originalTile;
-    public Tilemap highlightMap;
+    public GameObject seed;
 
-    private Vector3Int previous;
+
+    private bool flag = true;
     void Start()
     {
-        Vector3Int currentCell = highlightMap.WorldToCell(transform.position);
-        //Debug.Log(previous);
+        
         
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector3Int currentCell = highlightMap.WorldToCell(transform.position);
-        if (currentCell != previous && Input.GetButtonDown("Fire1"))
+        flag = false;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        flag = true;
+    }
+    void Update()
+    {
+        
+        if (flag && Input.GetButtonDown("Fire1"))
         {
 
-            highlightMap.SetTile(currentCell, highlightTile);
-            //highlightMap.SetTile(previous, originalTile);
-
-            // save the new position for next frame
-            //previous = currentCell;
+            GameObject newSeed = Instantiate(seed);
+            newSeed.transform.position = new Vector3 (gameObject.transform.position.x, (float)(gameObject.transform.position.y - 0.5));
+            newSeed.SetActive(true);
+            
         }
     }
 }

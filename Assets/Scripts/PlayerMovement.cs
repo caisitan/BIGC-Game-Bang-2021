@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    public Animator animator;
     
     private Rigidbody2D rb;
     private Vector3 MoveVelocity;
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(MoveVelocity);
             
-            animator = GetComponent<Animator>();
             
             
         }

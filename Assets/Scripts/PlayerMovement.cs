@@ -8,12 +8,13 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     private Vector3 MoveVelocity;
+    private Animator animator;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
         if (MoveVelocity != Vector3.zero)
         {
             rb.AddForce(MoveVelocity);
-            
-            
-            
+            animator.SetInteger("isWalk", 1);
+        }
+        else
+        {
+            animator.SetInteger("isWalk", 0);
         }
         
     }

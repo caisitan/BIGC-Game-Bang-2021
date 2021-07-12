@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public Animator animator;
     
     private Rigidbody2D rb;
-    private Vector2 MoveVelocity;
+    private Vector3 MoveVelocity;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +20,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
         MoveVelocity = moveInput.normalized * speed;
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + MoveVelocity * Time.fixedDeltaTime);
-        if (MoveVelocity != Vector2.zero)
+        
+        
+        if (MoveVelocity != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, MoveVelocity);
+            rb.AddForce(MoveVelocity);
+            
+            animator = GetComponent<Animator>();
+            
+            
         }
+        
     }
 }

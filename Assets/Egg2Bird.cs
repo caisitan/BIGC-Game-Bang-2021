@@ -16,6 +16,7 @@ public class Egg2Bird : MonoBehaviour
             egg.GetComponent<SpriteRenderer>().enabled = true;
             StartCoroutine(Birth(egg));
             actived = true;
+            GetComponent<BoxCollider2D>().enabled = false;
             
             
         }

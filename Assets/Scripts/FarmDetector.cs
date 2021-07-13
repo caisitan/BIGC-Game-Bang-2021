@@ -7,6 +7,7 @@ public class FarmDetector : MonoBehaviour
     // Start is called before the first frame update
     public GameObject seed;
     public GameStats stats;
+    public GameObject eggPlate;
 
     private bool plant = false;
     private bool flag = false;
@@ -89,6 +90,7 @@ public class FarmDetector : MonoBehaviour
             if (interactiveObject.name == "egg")
             {
                 stats.GetComponent<GameStats>().egg = true;
+                eggPlate.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
 

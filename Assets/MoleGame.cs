@@ -12,8 +12,13 @@ public class MoleGame : MonoBehaviour
     public float interval = 0.1f;
     public Text point;
     public GameObject panel;
-    
+    public GameStats stats;
+
     private GameObject temp;
+    private void Awake()
+    {
+        stats = GameObject.Find("Game Stats").GetComponent<GameStats>();
+    }
     void Start()
     {
         foreach (GameObject obj in moles)
@@ -48,7 +53,7 @@ public class MoleGame : MonoBehaviour
     private IEnumerator WaitTime()
     {
         yield return new WaitForSeconds(3);
-
+        stats.GetComponent<GameStats>().mole = true;
         SceneManager.LoadScene("SampleScene");
     }
 }

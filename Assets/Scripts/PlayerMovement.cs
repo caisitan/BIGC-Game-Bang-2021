@@ -5,21 +5,31 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    
+    public GameStats stats;
+
     private Rigidbody2D rb;
     private Vector3 MoveVelocity;
     private Animator animator;
     private bool jump;
     private bool jumped = true;
     private int JumpCounter = 0;
-    
+    private void Awake()
+    {
+        stats = GameObject.Find("Game Stats").GetComponent<GameStats>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         
+        
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         jump = Input.GetKeyDown(KeyCode.Space);
+        if (GetComponent<SpriteRenderer>().sprite.name == "character(Walk with fire)3")
+        {
+            animator.SetInteger("isFire", 1);
+        }
     }
 
     // Update is called once per frame
@@ -30,11 +40,24 @@ public class PlayerMovement : MonoBehaviour
         jump = Input.GetKeyDown(KeyCode.Space);
         if (!jumped && jump && JumpCounter <= 1)
         {
-            //rb.gravityScale = 0;
-            rb.AddForce(new Vector2(0, 120));
-            animator.SetInteger("isJump", 1);
-            JumpCounter++;
-            //rb.gravityScale = 1;
+            if (stats.bird)
+            {
+                //rb.gravityScale = 0;
+                rb.AddForce(new Vector2(0, 120));
+                animator.SetInteger("isWalk", 0);
+                animator.SetInteger("isJump", 1);
+                JumpCounter++;
+                //rb.gravityScale = 1;
+            }
+            else
+            {
+                //rb.gravityScale = 0;
+                rb.AddForce(new Vector2(0, 120));
+                animator.SetInteger("isWalk", 0);
+                animator.SetInteger("isJump", 1);
+                JumpCounter = 2;
+                //rb.gravityScale = 1;
+            }
             
         }
     }
@@ -42,10 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         jumped = false;
         JumpCounter = 0;
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        
+        animator.SetInteger("isJump", 0);
     }
     private void FixedUpdate()
     {

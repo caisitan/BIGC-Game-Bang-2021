@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game1.unity
     guid: c6a404de5f3ca674a90b5afde4d89895
+  - enabled: 1
+    path: Assets/Scenes/Mole Game.unity
+    guid: 38d688b4b87fb0243b889c0379f5a3e4
+  - enabled: 1
+    path: Assets/Scenes/Fish Game.unity
+    guid: 3f3f62211ff346448986f3431353e22b
   m_configObjects: {}

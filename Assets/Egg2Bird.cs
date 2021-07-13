@@ -5,12 +5,14 @@ using UnityEngine;
 public class Egg2Bird : MonoBehaviour
 {
     private GameObject egg;
+    private Transform temp;
     private bool actived = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        egg = collision.transform.Find("egg").gameObject;
-        if (egg != null && !actived)
+        temp = collision.transform.Find("egg");
+        if (temp != null && !actived)
         {
+            egg = temp.gameObject;
             Destroy(egg);
             egg = transform.Find("incubator").gameObject;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;

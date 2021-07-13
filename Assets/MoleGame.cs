@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoleGame : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] moles;
     public float countdown = 2f;
-    public float interval = 0.3f;
+    public float interval = 0.1f;
     public Text point;
-
+    public GameObject panel;
     
     private GameObject temp;
     void Start()
@@ -36,6 +37,18 @@ public class MoleGame : MonoBehaviour
         {
             countdown -= Time.deltaTime;
         }
+        if (point.text == "10")
+        {
+            countdown = 2;
+            panel.SetActive(true);
+            StartCoroutine(WaitTime());
+        }
         
+    }
+    private IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("SampleScene");
     }
 }

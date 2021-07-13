@@ -11,6 +11,7 @@ public class Egg2Bird : MonoBehaviour
         egg = collision.transform.Find("egg").gameObject;
         if (egg != null && !actived)
         {
+            Destroy(egg);
             egg = transform.Find("incubator").gameObject;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             egg.GetComponent<SpriteRenderer>().enabled = true;
@@ -29,9 +30,6 @@ public class Egg2Bird : MonoBehaviour
         transform.Find("bird").gameObject.SetActive(true);
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
 }

@@ -42,11 +42,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: background
-    uniqueID: 2010041749
-    locked: 0
   - name: Map
     uniqueID: 429936605
+    locked: 0
+  - name: background
+    uniqueID: 2010041749
     locked: 0
   - name: Default
     uniqueID: 0

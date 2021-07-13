@@ -79,7 +79,7 @@ public class FarmDetector : MonoBehaviour
         if (flag && !plant && Input.GetButtonDown("Fire1"))
         {
             GameObject newSeed = Instantiate(seed);
-            newSeed.transform.position = new Vector3 (gameObject.transform.position.x, (float)(gameObject.transform.position.y - 0.45));
+            newSeed.transform.position = new Vector3 (gameObject.transform.position.x, (float)(gameObject.transform.position.y - 0.6));
             newSeed.SetActive(true);
         }
         else if (interactive && Input.GetButtonDown("Fire1"))
@@ -89,9 +89,14 @@ public class FarmDetector : MonoBehaviour
             interactive = false;
             if (interactiveObject.name == "egg")
             {
+                interactiveObject.GetComponent<SpriteRenderer>().enabled = false;
                 stats.GetComponent<GameStats>().egg = true;
                 eggPlate.GetComponent<SpriteRenderer>().flipX = false;
             }
+        }
+        if (stats.bird)
+        {
+            transform.Find("bird").gameObject.SetActive(true);
         }
 
     }

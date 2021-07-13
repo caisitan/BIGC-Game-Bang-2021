@@ -12,6 +12,7 @@ public class GameStats : MonoBehaviour
     public GameObject fishObject;
     public bool mole = false;
     public bool bird = false;
+    public GameObject birdObject;
 
     private static GameStats instance;
     void Start()
@@ -19,6 +20,7 @@ public class GameStats : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(eggObject);
         DontDestroyOnLoad(fishObject);
+        
         
     }
     private void Awake()
@@ -40,5 +42,10 @@ public class GameStats : MonoBehaviour
         {
             fishObject.SetActive(true);
         }
+        else
+        {
+            fishObject.SetActive(false);
+        }
+        
     }
 }

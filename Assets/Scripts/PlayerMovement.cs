@@ -29,11 +29,11 @@ public class PlayerMovement : MonoBehaviour
         jump = Input.GetKeyDown(KeyCode.Space);
         if (!jumped && jump && JumpCounter <= 1)
         {
-            rb.gravityScale = 0;
-            rb.AddForce(new Vector2(0, 1 * 120));
+            //rb.gravityScale = 0;
+            rb.AddForce(new Vector2(0, 120));
             animator.SetInteger("isJump", 1);
             JumpCounter++;
-            rb.gravityScale = 1;
+            //rb.gravityScale = 1;
             
         }
     }

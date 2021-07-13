@@ -74,6 +74,7 @@ public class FarmDetector : MonoBehaviour
         else if (interactive && Input.GetButtonDown("Fire1"))
         {
             interactiveObject.transform.parent = gameObject.transform;
+            interactiveObject.transform.position = transform.Find("Object point").gameObject.transform.position;
             interactive = false;
         }
     }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - soil
+  - InteractiveObjects
+  - Seed
+  - Incubator
   layers:
   - Default
   - TransparentFX

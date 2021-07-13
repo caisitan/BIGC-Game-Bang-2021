@@ -7,23 +7,30 @@ public class FarmDetector : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject seed;
+    
 
-
-    private bool plant = true;
+    private bool plant = false;
     private bool flag = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Seed")
+        {
+            plant = true;
+            return;
+        }
         plant = false;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        plant = true;
+        plant = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "soil")
         {
             flag = true;
+            Debug.Log(plant);
+            Debug.Log(flag);
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -39,7 +46,7 @@ public class FarmDetector : MonoBehaviour
     }
     void Update()
     {
-        if (flag && plant && Input.GetButtonDown("Fire1"))
+        if (flag && !plant && Input.GetButtonDown("Fire1"))
         {
             GameObject newSeed = Instantiate(seed);
             newSeed.transform.position = new Vector3 (gameObject.transform.position.x, (float)(gameObject.transform.position.y - 0.45));

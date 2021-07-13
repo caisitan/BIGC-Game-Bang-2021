@@ -30,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         if (!jumped && jump && JumpCounter <= 1)
         {
             rb.gravityScale = 0;
-            rb.AddForce(new Vector2(0, 1 * 80));
+            rb.AddForce(new Vector2(0, 1 * 120));
             animator.SetInteger("isJump", 1);
             JumpCounter++;
             rb.gravityScale = 1;
-            Debug.Log(JumpCounter);
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

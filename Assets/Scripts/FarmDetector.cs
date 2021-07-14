@@ -69,7 +69,7 @@ public class FarmDetector : MonoBehaviour
     }
     private void Start()
     {
-        if (stats.GetComponent<GameStats>().egg)
+        if (stats.GetComponent<GameStats>().egg && stats.GetComponent<GameStats>().eggObject != null)
         {
             stats.GetComponent<GameStats>().eggObject.transform.parent = gameObject.transform;
         }

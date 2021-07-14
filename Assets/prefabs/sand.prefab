@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4391060475128551604}
   m_Layer: 0
   m_Name: sand
-  m_TagString: Untagged
+  m_TagString: Sand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 429936605
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6f646d79af8433149a557d001c3f5406, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

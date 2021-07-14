@@ -8,6 +8,7 @@ TagManager:
   - InteractiveObjects
   - Seed
   - Incubator
+  - Sand
   layers:
   - Default
   - TransparentFX
